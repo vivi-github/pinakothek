@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>My ticket</title>
+  <script src="myticket.js"></script>
+    <style>
+    
+    table{
+
+        width: 100%;
+
+    }
+
+    table, th, td{
+
+        border: 1px solid #000000;
+    
+    }
+    </style>
+</head>
+<body>
+    <div id="container"><h1 class="display-4" style="font-size: 2.5rem;">My Tickets</h1></div>
+
+                <?php
+                session_start();
+                $user_id = $_SESSION['user_id'];
+               
+                $connect=mysqli_connect( "localhost",  "team04", "team04");
+                mysqli_select_db($connect, "team04");
+                
+                $query= "select * from myReservation where user = '".$user_id."' order by date" ;
+      
+                $result=mysqli_query($connect, $query);
+      
+                while($newArray = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+
+                  ?>
+                  <div id="container" class="mb-4" style="position: relative;">
+                      <div>
+                        <h5 id="ticket_num" style="position:absolute; left:45px; top:30px;"><?php echo $newArray['ticket_num'];?></h5>
+                        <button class="btn btn-secondary" id="deletebutton" style="position:absolute; left:600px; top:20px;" onclick="deleteticket();location.reload();" >Cancle</button> 
+                      </div>
+                      <h5 class="display-4" id="MuseumName" style="font-size: 2rem; position:absolute; left:230px; top:100px;"><?php echo $newArray['museum'];?></h5>
+                      <h5 class="lead" id="<?php echo $newArray['date'];?>" style="position:absolute; left:500px; top:190px;"><?php echo date("d F, Y", strtotime($newArray['date']));?></h5>
+                      <img src="ticket_template.jpg" style="width:700px;" />
+                  </div>
+            <?php
+                }  
+             ?>
+
+
+</body>
+</html>

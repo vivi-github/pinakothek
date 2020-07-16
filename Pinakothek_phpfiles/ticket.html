@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css\bootstrap-datepicker3.css">
+    <link rel="stylesheet" href="css\bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
+    <script src="ticket.js"></script>
+    <link rel="stylesheet" href="css/custom.css?after">
+    <title>Document</title>
+
+    <style>
+        .bgimg {
+            position:relative;
+            border: 0;
+            padding: 0; 
+            background-image: url('header.jpg');
+            min-height: 250px;
+            background-position: center;
+            background-size: cover;
+        }
+        .bg-nav {
+            background-color: #2d1829;
+        }
+
+     .btn-secondary {
+      color: #fff;
+      background-color: rgb(45, 24, 41);
+      border-color:rgb(45, 24, 41);
+    }
+
+    .table .thead-dark th {
+    color: #fff;
+    background-color: rgb(45, 24, 41);
+    border-color: rgb(45, 24, 41);
+}
+
+    </style>
+
+</head>
+<body style="background-color: #dcd6db; ">
+  <div class="bgimg"></div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="main.html">Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="museum.html">Museum</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="artist.html">Artist</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="ticket.html">Ticket
+                <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="mypage.html">My Page</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="sidebar">
+
+    <?php
+      session_start();
+      $user_id = $_SESSION['user_id'];
+      $connect=mysqli_connect( "localhost",  "team04", "team04");
+      mysqli_select_db($connect, "team04");
+    ?>
+
+    <div>
+
+      <form method="GET" action="buyTicket.php">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script src="locales/bootstrap-datepicker.ko.min.js" charset="UTF-8"></script>
+        <script>
+          $( function() {
+            $( "#datepicker" ).datepicker();
+          } );
+        </script>
+                   
+        <h4>Museum:</h4>
+        <select id="MyList" class="custom-select" name="museumList" aria-label="Example select with button addon"  onchange="showCalendar(this.value)">
+          <option selected>Choose...</option>
+            <?php
+              $query= "select * from mylist where reserved = 0 and user='".$user_id."'";
+              $result=mysqli_query($connect, $query);
+              while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                echo '<option value="'.$row['museum'].'">'.$row['museum'].'</option>';
+              }
+              mysqli_free_result($result);
+            ?>
+        </select>
+        <h4 class="h4 mt-4">Date:</h4>
+        <input type="text" name="selectedDate" id="datepicker" class="form-control" autocomplete="off" placeholder="Date" aria-label="Date" aria-describedby="addon-wrapping" style="text-align: center;">
+        <h4 class="h4 mt-4">Amount:</h4>
+        <input type=text id="amount" name=amount value=1 class="form-control mr-1" style="text-align: center; width: 69%; float: left;">
+        <input type=button class="btn btn-light" value="&bigtriangleup;" onClick="javascript:this.form.amount.value++;">
+        <input type=button class="btn btn-light" value="&bigtriangledown;" onClick="javascript:this.form.amount.value==1? this.form.amount.value=1: this.form.amount.value--;">
+        <p></p>
+        <div class="text-center"><input type="submit" class="btn btn-secondary mt-4 mb-4 px-5 py-2" value="Buy"></div>
+        
+      </form>
+
+    </div>
+
+  </div>
+
+<div id="content" >
+  <div id="calendar-area" class="p-5">
+
+
+      <br/><br/>
+      <div class="container m-t-120 m-b-120">
+              <div class="display-4" style="text-align: center;">Select museum and date</div>
+      </div>
+
+
+  </div>
+</div>
+
+<div id="footer"></div>
+
+</body>
+</html>

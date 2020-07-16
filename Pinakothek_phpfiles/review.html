@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/starbox.css" />
+    <title>Review</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="myreview.js"></script>
+
+        <style>
+        
+
+.glyphicon-lg{font-size:3em}
+.blockquote-box{border-right:5px solid #E6E6E6;margin-bottom:25px}
+.blockquote-box .square{width:100px;min-height:50px;margin-right:22px;text-align:center!important;background-color:#E6E6E6;padding:20px 0}
+.blockquote-box.blockquote-primary{border-color:#357EBD}
+.blockquote-box.blockquote-primary .square{background-color:#428BCA;color:#FFF}
+.blockquote-box.blockquote-success{border-color:#4CAE4C}
+.blockquote-box.blockquote-success .square{background-color:#5CB85C;color:#FFF}
+.blockquote-box.blockquote-info{border-color:#46B8DA}
+.blockquote-box.blockquote-info .square{background-color:#5BC0DE;color:#FFF}
+.blockquote-box.blockquote-warning{border-color:#EEA236}
+.blockquote-box.blockquote-warning .square{background-color:#F0AD4E;color:#FFF}
+.blockquote-box.blockquote-danger{border-color:#D43F3A}
+.blockquote-box.blockquote-danger .square{background-color:#D9534F;color:#FFF}
+
+/*!
+ * @copyright © Kartik Visweswaran, Krajee.com, 2014
+ * @version 2.5.0
+ *
+ * A simple yet powerful JQuery star rating plugin that allows rendering
+ * fractional star ratings and supports Right to Left (RTL) input.
+ *
+ * For more JQuery/Bootstrap plugins and demos visit http://plugins.krajee.com
+ * For more Yii related demos visit http://demos.krajee.com
+ */
+.rating-loading {
+    width: 25px;
+    height: 25px;
+    font-size: 0px;
+    color: #fff;
+    background: transparent url('../img/loading.gif') top left no-repeat;
+    border: none;
+}
+/*
+ * Stars
+ */
+.rating-gly {
+    font-family: 'Glyphicons Halflings';
+}
+.rating-gly-star {
+    font-family: 'Glyphicons Halflings';
+    padding-left: 2px;
+}
+
+.rating-gly-star .rating-stars:before {
+    padding-left: 2px;
+}
+
+.rating-lg .rating-gly-star, .rating-lg .rating-gly-star .rating-stars:before {
+    padding-left: 4px;
+}
+
+.rating-xl .rating-gly-star, .rating-xl .rating-gly-star .rating-stars:before {
+    padding-left: 2px;
+}
+
+.rating-active {
+    cursor: default;
+}
+
+.rating-disabled {
+    cursor: not-allowed;
+}
+
+.rating-uni {
+    font-size: 1.2em;
+    margin-top: -5px;
+}
+
+.rating-container {
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+    color: #e3e3e3;
+    overflow: hidden;
+}
+
+.rating-container:before {
+    content: attr(data-content);
+}
+
+.rating-container .rating-stars {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #fde16d;
+    transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -webkit-transition: all 0.25s ease-out;
+}
+
+.rating-container .rating-stars:before {
+    content: attr(data-content);
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.7);
+}
+
+.rating-container-rtl {
+    position: relative;
+    vertical-align: middle;
+    display: inline-block;
+    overflow: hidden;
+    color: #fde16d;
+}
+
+.rating-container-rtl:before {
+    content: attr(data-content);
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.7);
+}
+
+.rating-container-rtl .rating-stars {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #e3e3e3;
+    transition: all 0.25s ease-out;
+    -o-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    -webkit-transition: all 0.25s ease-out;
+}
+
+.rating-container-rtl .rating-stars:before {
+    content: attr(data-content);
+}
+
+/**
+ * Rating sizes
+ */
+.rating-xl {
+    font-size: 4.89em;
+}
+
+.rating-lg {
+    font-size: 3.91em;
+}
+
+.rating-md {
+    font-size: 3.13em;
+}
+
+.rating-sm {
+    font-size: 2.5em;
+}
+
+.rating-xs {
+    font-size: 2em;
+}
+
+/**
+ * Clear rating button
+ */
+.star-rating .clear-rating, .star-rating-rtl .clear-rating {
+    color: #aaa;
+    cursor: not-allowed;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 60%;
+}
+
+.clear-rating-active {
+    cursor: pointer !important;
+}
+
+.clear-rating-active:hover {
+    color: #843534;
+}
+
+.star-rating .clear-rating {
+    padding-right: 5px;
+}
+
+/**
+ * Caption
+ */
+.star-rating .caption, .star-rating-rtl .caption {
+    color: #999;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 55%;
+}
+
+.star-rating .caption {
+    padding-left: 5px;
+}
+
+.star-rating-rtl .caption {
+    padding-right: 5px;
+}
+
+.btn-secondary {
+        color: #fff;
+        background-color: rgb(45, 24, 41);
+        border-color:rgb(45, 24, 41);
+      }
+</style>
+
+
+</head>
+
+<body>
+
+                <?php
+                $connect=mysqli_connect( "localhost",  "team04", "team04");
+                mysqli_select_db($connect, "team04");
+              ?>
+        <div class="container">
+                <div class="row">
+                
+                <table width="100%" >
+                  <div class="col-md-9 col-md-offset-0">
+                    <tr><td width="77%">
+                    <div class="">
+                      <form class="form-horizontal" action="sendMyreview.php" method="GET">
+                      <fieldset>
+
+                     <h4 class="h4 mt-4">Select Museum :</h4>
+                     <div  style="width: 100px;">
+                    <select class="custom-select" name="MuseumName" id="MuseumName" aria-placeholder="Select Museum" aria-label="Example select with button addon" 
+                    onchange="changeLabel();" style="width: auto; font-size: 15px;">
+                                                  <option style="height: 50px;" selected>Choose...</option>
+                                                 
+                                                  <?php
+
+                                                    $today = date("Y-m-d");
+                                                    $query = "select distinct myReservation.museum from myReservation where myReservation.date <= '".date("Y-m-d")."' AND myReservation.reviewed = 0;";
+                                                    
+                                                    $result=mysqli_query($connect, $query);
+
+                                                    while($row=mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                                                      echo '<option value="'.$row['museum'].'">'.$row['museum'].'</option>';
+                                                    }
+                                                    mysqli_free_result($result);
+                                                  ?>
+                                                </select>
+                                </div>
+                          
+
+                        <h1 id="Museum Name"></h1>
+
+                        <!-- Message body -->
+                        <div class="form-group">
+                          <label class="col-md-3 control-label" for="message">Your Review</label>
+                          <div class="col-md-9">
+                            <textarea class="form-control" id="message" name="message" placeholder="Please enter your review here..." rows="9"></textarea>
+                          </div>
+                        </div>
+                        <!-- Rating -->
+                        <div class="form-group">
+                          <label class="col-md-3 control-label" for="message">Your rating</label>
+                          <div class="col-md-9">
+                            <input id="input-21e" value="0" type="number" name="rating" class="rating" min=0 max=5 step=0.5 data-size="xs" >
+                          </div>
+                        </div>
+                </td>
+                <td valign="top" width="23%">
+                        <!-- Form actions -->
+
+                        <div class="form-group">
+                          <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-secondary mt-4 mb-4 px-5 py-2" >Submit</button>
+                            <button type="reset" class="btn btn-default btn-md">Clear</button>
+                          </div>
+                        </div>
+                      </fieldset>
+                      </form>
+                    </div>
+                </div>
+                </td>
+                </tr>
+                </table>
+              </div>
+
+</body>
+</html>

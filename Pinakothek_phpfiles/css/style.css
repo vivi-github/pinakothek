@@ -1,0 +1,97 @@
+*{margin: 0%; padding: 0%;}
+
+#main_div{ widows: 100%; border: 1px; }
+il ul{ display: none;}
+#header{ border-bottom: 1px; padding: 20px; }
+#nav {border-bottom: 1px solid #000000; padding: 20px;}
+
+
+#sidebar   {width:20%; float: left; padding-top: 25px; padding-left: 25px; padding-right: 25px; background-color: #dcd6db;
+  height:95vh !important; overflow:hidden;
+}
+
+
+#content   {width: 80%; float: right;
+  min-height: 100vh;
+  background-color: white;
+}
+
+.star-rating { width:205px; }
+.star-rating,.star-rating span { display:inline-block; height:39px; overflow:hidden; background:url(star.png)no-repeat; }
+.star-rating span{ background-position:left bottom; line-height:0; vertical-align:top; }
+
+      
+      .fa {
+        font-size: 25px;
+      }
+      
+      .checked {
+        color: orange;
+      }
+      
+      /* Three column layout */
+      .side {
+        float: left;
+        width: 15%;
+        margin-top: 10px;
+      }
+      
+      .middle {
+        float: left;
+        width: 70%;
+        margin-top: 10px;
+      }
+      
+      /* Place text to the right */
+      .right {
+        text-align: right;
+      }
+      
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      
+      /* The bar container */
+      .bar-container {
+        width: 100%;
+        background-color: #f1f1f1;
+        text-align: center;
+        color: white;
+      }
+      
+      /* Individual bars */
+      .bar-5 {width: 60%; height: 18px; background-color: #4CAF50;}
+      .bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
+      .bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
+      .bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
+      .bar-1 {width: 15%; height: 18px; background-color: #f44336;}
+      
+      /* Responsive layout - make the columns stack on top of each other instead of next to each other */
+      @media (max-width: 400px) {
+        .side, .middle {
+          width: 100%;
+        }
+        /* Hide the right column on small screens */
+        .right {
+          display: none;
+        }
+      }
+
+
+#ifr {
+        width: 100%;
+        height: 1000px;
+        overflow: hidden;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: rgb(45, 24, 41);
+  border-color:rgb(45, 24, 41);
+}
+
+
+#footer{clear: both; background-color: #2d1829; border-top: 1px solid #ccc; padding: 20px;} 

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/custom.css?after">
+    <style>
+        .bgimg {
+            position:relative;
+            border: 0;
+            padding: 0; 
+            background-image: url('header.jpg');
+            min-height: 250px;
+            background-position: center;
+            background-size: cover;
+        }
+        .bg-nav {
+            background-color: #2d1829;
+        }
+    </style>
+
+    <title>My Page</title>
+</head>
+
+<body style="background-color: #dcd6db; ">
+
+    <div class="bgimg"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="main.html">Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="museum.html">Museum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="artist.html">Artist</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ticket.html">Ticket</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="mypage.html">My Page
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+    <div id="sidebar">
+
+        <div class="container mt-4" style="margin-bottom: 300px; text-align: center;">
+            <img src="user_icon.png" style="width:75%">
+            <h1 class="display-4"><?php session_start(); echo $_SESSION['user_id'];?></h1>
+            <button type="button" class="btn btn-secondary mt-4 mb-4 px-5 py-2" onclick="location.href='logout.php'">Logout</button>
+        </div>
+
+    </div>
+
+    <div id="content">
+
+        <div class="card text-center border-0" >
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="favorite.html" target="ifr">Favorite</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="myticket.html"  target="ifr">MyTicket</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="review.html"  target="ifr">Review</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <iframe name="ifr" class="container" frameborder="0" style="display:block; width:100vw; height: 100vh"></iframe>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer"></div>
+
+</body>
+
+</html>

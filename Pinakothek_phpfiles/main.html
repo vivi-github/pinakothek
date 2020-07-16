@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/util.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <script src="js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+  <link rel="stylesheet" href="css/custom.css?after">
+
+  <style>
+    .bgimg {
+      position:relative;
+      border: 0;
+      padding: 0; 
+      background-image: url('header.jpg');
+      min-height: 250px;
+      background-position: center;
+      background-size: cover;
+    }
+    .bg-nav {
+      background-color: #2d1829;
+    }
+  </style>
+
+  <title>Main Page</title>
+</head>
+
+<body>
+
+  <?php
+    session_start();
+    if(!isset($_SESSION['user_id'])) {
+      echo "<meta http-equiv='refresh' content='0;url=login.html'>";
+      exit;
+    }
+    $user_id = $_SESSION['user_id'];
+  ?>
+
+  <div class="bgimg"></div>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="main.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="museum.html">Museum</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="artist.html">Artist</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ticket.html">Ticket</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="mypage.html">My Page</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container m-t-120 m-b-120">
+    <img src="user_icon.png" class="mx-auto d-block m-b-20" width="220">
+    <h2 class="display-4 text-center" style="font-size: 2.5rem">Welcome, <?php echo $user_id?>!</h2>   
+  </div>
+
+  <div id="footer">
+    <h1><p>Copyright © 2013-2019 Colorlib - All Rights Reserved. Theme by Colorlib Powered by WordPress</p></h1>
+  </div>
+
+</body>
+</html>
